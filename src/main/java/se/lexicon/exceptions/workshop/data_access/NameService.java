@@ -7,7 +7,7 @@ import se.lexicon.exceptions.workshop.domain.Gender;
 import se.lexicon.exceptions.workshop.domain.Person;
 import se.lexicon.exceptions.workshop.fileIO.CSVReader_Writer;
 
-public class NameService {
+public class    NameService {
 	
 
 	    private List<String>maleFirstNames;
