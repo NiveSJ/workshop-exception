@@ -59,6 +59,7 @@ public class Main {
         } catch (DuplicateNameException e) {
 
             System.out.println("The Last Name" + " " + e.getAttribute() + " " + "Already present.");
+
         }
 
 

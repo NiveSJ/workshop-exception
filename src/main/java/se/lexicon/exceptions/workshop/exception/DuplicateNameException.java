@@ -1,7 +1,7 @@
 package se.lexicon.exceptions.workshop.exception;
 
 public class DuplicateNameException extends Exception {
-    ;
+
     private String message;
     private String attribute;
 
