@@ -42,6 +42,8 @@ public class NameService {
 
     public Person getNewRandomPerson() {
         Gender gender = getRandomGender();
+        // Added exception
+        if (gender == null) throw new IllegalArgumentException("Problem with random gender generator");
         Person person = null;
         switch (gender) {
             case MALE:
@@ -80,9 +82,9 @@ public class NameService {
      *
      * @param name
      */
-    public void addFemaleFirstName(String name) {
+    public void addFemaleFirstName(String name) throws DuplicateNameException {
         Optional<String> females = femaleFirstNames.stream().filter(females1 -> females1.contains(name)).findFirst();
-        if(females.get() != null) throw new DuplicateNameException("Female Name ")
+        if (females.isPresent()) throw new DuplicateNameException("Female Name already present", females.get());
         femaleFirstNames.add(name);
         CSVReader_Writer.saveFemaleNames(femaleFirstNames);
 
@@ -95,7 +97,10 @@ public class NameService {
      *
      * @param name
      */
-    public void addMaleFirstName(String name) {
+    public void addMaleFirstName(String name) throws DuplicateNameException {
+        Optional<String> males = maleFirstNames.stream().filter(males1 -> males1.contains(name)).findFirst();
+        if (males.isPresent()) throw new DuplicateNameException("Male Name already present", males.get());
+
         maleFirstNames.add(name);
         CSVReader_Writer.saveMaleNames(maleFirstNames);
     }
@@ -107,7 +112,9 @@ public class NameService {
      *
      * @param lastName
      */
-    public void addLastName(String lastName) {
+    public void addLastName(String lastName) throws DuplicateNameException {
+        Optional<String> lastnames = lastNames.stream().filter(lastnames1 -> lastnames1.contains(lastName)).findFirst();
+        if (lastnames.isPresent()) throw new DuplicateNameException("Male Name already present", lastnames.get());
         lastNames.add(lastName);
         CSVReader_Writer.saveLastNames(lastNames);
     }
