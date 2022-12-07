@@ -1,6 +1,7 @@
 package se.lexicon.exceptions.workshop;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import se.lexicon.exceptions.workshop.data_access.NameService;
@@ -14,10 +15,12 @@ public class Main {
     public static void main(String[] args) {
 
         List<String> maleFirstNames = CSVReader_Writer.getMaleFirstNames();
+
         List<String> femaleFirstNames = CSVReader_Writer.getFemaleFirstNames();
 
+        List<String> lastNames = new ArrayList<>();
         try {
-            List<String> lastNames = CSVReader_Writer.getLastNames();
+            lastNames = CSVReader_Writer.getLastNames();
         } catch (IOException e) {
             e.printStackTrace();
         }

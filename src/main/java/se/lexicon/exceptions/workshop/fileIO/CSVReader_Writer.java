@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -101,32 +102,45 @@ public class CSVReader_Writer {
 
     public static void saveLastNames(List<String> lastNames) {
 
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get("lastnames.txt"));
-        for (String toWrite : lastNames) {
-            writer.append(toWrite + ",");
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("lastnames.txt"), StandardOpenOption.APPEND)) {
+            for (String toWrite : lastNames) {
+                writer.append(toWrite + ",");
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        writer.flush();
+
     }
 
     public static void saveFemaleNames(List<String> femaleNames) {
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_female.txt"));
-        for (String toWrite : femaleNames) {
-            writer.append(toWrite + ",");
+
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_female.txt"), StandardOpenOption.APPEND)) {
+            for (String toWrite : femaleNames) {
+                writer.append(toWrite + ",");
+                writer.flush();
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
-        writer.flush();
+
 
     }
 
 
     public static void saveMaleNames(List<String> maleNames) {
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_males.txt"));
-        for (String toWrite : maleNames) {
-            writer.append(toWrite + ",");
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_males.txt"), StandardOpenOption.APPEND);) {
+            for (String toWrite : maleNames) {
+                writer.append(toWrite + ",");
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        writer.flush();
-
-
     }
 
 
 }
+
+
+
