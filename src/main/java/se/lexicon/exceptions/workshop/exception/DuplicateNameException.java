@@ -1,6 +1,6 @@
 package se.lexicon.exceptions.workshop.exception;
 
-public class DuplicateNameException extends Exception {
+public class DuplicateNameException extends RuntimeException {
 
     private String message;
     private String attribute;
@@ -9,7 +9,6 @@ public class DuplicateNameException extends Exception {
         super(message);
         this.attribute = attribute;
     }
-
 
 
     public String getAttribute() {

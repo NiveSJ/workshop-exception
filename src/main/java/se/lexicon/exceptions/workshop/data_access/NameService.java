@@ -83,8 +83,10 @@ public class NameService {
      * @param name
      */
     public void addFemaleFirstName(String name) throws DuplicateNameException {
-        Optional<String> females = femaleFirstNames.stream().filter(females1 -> females1.equals(name)).findFirst();
-        if (females.isPresent()) throw new DuplicateNameException("Female Name already present", females.get());
+        Optional<String> females = femaleFirstNames.stream().
+                filter(females1 -> females1.equals(name)).findFirst();
+        if (females.isPresent())
+            throw new DuplicateNameException("Female Name already present", females.get());
         femaleFirstNames.add(name);
         CSVReader_Writer.saveFemaleNames(femaleFirstNames);
 
@@ -110,9 +112,20 @@ public class NameService {
      * If name already exists throw a new custom exception you will have to create called
      * DuplicateNameException.
      *
-     * @param lastName
+     * @param
      */
+
+
+    public boolean add(String name) {
+        boolean contains = femaleFirstNames.contains(name);
+        System.out.println(contains);
+        return contains;
+
+    }
+
     public void addLastName(String lastName) throws DuplicateNameException {
+
+
         Optional<String> lastnames = lastNames.stream().filter(lastnames1 -> lastnames1.equals(lastName)).findFirst();
         if (lastnames.isPresent()) throw new DuplicateNameException("Last Name already present", lastnames.get());
         lastNames.add(lastName);

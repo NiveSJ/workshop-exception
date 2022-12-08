@@ -52,7 +52,7 @@ public class Main {
         }
         // Trying to add Last names
         try {
-            nameService.addLastName("Vaithiam");
+            nameService.addLastName("Jackobsson");
             //nameService.addLastName("Solai");
             nameService.addLastName("Sjöberg");
 
@@ -61,6 +61,8 @@ public class Main {
             System.out.println("The Last Name" + " " + e.getAttribute() + " " + "Already present.");
 
         }
+
+            nameService.add("Alice");
 
 
         Person test = nameService.getNewRandomPerson();

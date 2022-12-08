@@ -102,7 +102,7 @@ public class CSVReader_Writer {
 
     public static void saveLastNames(List<String> lastNames) {
 
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("lastnames.txt"), StandardOpenOption.APPEND)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("lastnames.txt"))) {
             for (String toWrite : lastNames) {
                 writer.append(toWrite + ",");
             }
@@ -115,7 +115,7 @@ public class CSVReader_Writer {
 
     public static void saveFemaleNames(List<String> femaleNames) {
 
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_female.txt"), StandardOpenOption.APPEND)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_female.txt"))) {
             for (String toWrite : femaleNames) {
                 writer.append(toWrite + ",");
                 writer.flush();
@@ -129,7 +129,8 @@ public class CSVReader_Writer {
 
 
     public static void saveMaleNames(List<String> maleNames) {
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_males.txt"), StandardOpenOption.APPEND);) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_males.txt")
+        )) {
             for (String toWrite : maleNames) {
                 writer.append(toWrite + ",");
             }
