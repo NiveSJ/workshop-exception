@@ -84,7 +84,7 @@ public class NameService {
      */
     public void addFemaleFirstName(String name) throws DuplicateNameException {
         Optional<String> females = femaleFirstNames.stream().
-                filter(females1 -> females1.equals(name)).findFirst();
+                filter(females1 -> females1.equalsIgnoreCase(name)).findFirst();
         if (females.isPresent())
             throw new DuplicateNameException("Female Name already present", females.get());
         femaleFirstNames.add(name);
@@ -100,7 +100,7 @@ public class NameService {
      * @param name
      */
     public void addMaleFirstName(String name) throws DuplicateNameException {
-        Optional<String> males = maleFirstNames.stream().filter(males1 -> males1.equals(name)).findFirst();
+        Optional<String> males = maleFirstNames.stream().filter(males1 -> males1.equalsIgnoreCase(name)).findFirst();
         if (males.isPresent()) throw new DuplicateNameException("Male Name already present", males.get());
 
         maleFirstNames.add(name);
@@ -116,17 +116,11 @@ public class NameService {
      */
 
 
-    public boolean add(String name) {
-        boolean contains = femaleFirstNames.contains(name);
-        System.out.println(contains);
-        return contains;
-
-    }
 
     public void addLastName(String lastName) throws DuplicateNameException {
 
 
-        Optional<String> lastnames = lastNames.stream().filter(lastnames1 -> lastnames1.equals(lastName)).findFirst();
+        Optional<String> lastnames = lastNames.stream().filter(lastnames1 -> lastnames1.equalsIgnoreCase(lastName)).findFirst();
         if (lastnames.isPresent()) throw new DuplicateNameException("Last Name already present", lastnames.get());
         lastNames.add(lastName);
         CSVReader_Writer.saveLastNames(lastNames);

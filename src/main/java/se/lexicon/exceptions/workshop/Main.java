@@ -62,8 +62,6 @@ public class Main {
 
         }
 
-            nameService.add("Alice");
-
 
         Person test = nameService.getNewRandomPerson();
         System.out.println(test);
